@@ -6,21 +6,23 @@ import Button from 'react-bootstrap/Button';
 export default function Topnavbar() {
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
         <Container>
-            <img src="../logo.png" alt="" />
-            <Navbar.Brand href="#home">Pet Sosmed</Navbar.Brand>
-            <Nav className="me-auto">
-                <Nav.Link href="Post">Post</Nav.Link>
+            <Navbar>
+            <Nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <img src="../logo.png" width="50px" height="50px" class="d-inline-block align-top" alt="" />
+                <Nav className="me-auto">
+                    <Nav.Link href="Home">Home</Nav.Link>
+                    <Nav.Link href="Post">Post</Nav.Link>
+                </Nav>
+                <Button variant="secondary" size='lg' active>
+                    Login
+                </Button>{' '}
+                <Button variant="secondary" size="lg" active>
+                    Signup
+                </Button>
             </Nav>
-            <Button variant="secondary" size='lg' active>
-                Login
-            </Button>{' '}
-            <Button variant="secondary" size="lg" active>
-                Signup
-            </Button>
+        </Navbar>
         </Container>
-      </Navbar>
     </div>  
    );
 }

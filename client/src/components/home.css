@@ -1,4 +1,9 @@
 .header {
     display: flex;
+    background-color: rgba(4, 4, 5, 0.973);
 }
 
+h1 {
+    text-justify: auto;
+    color: white;
+}
