@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import Footer from './footer'
+import Topnavbar from './topnavbar';
   
 export default function Signup() {
     const [name, setName] = useState('');
@@ -55,6 +57,7 @@ export default function Signup() {
 
   return (
     <div className="form">
+      <Topnavbar />
         <div>
             <h1>User Registration</h1>
         </div>
@@ -81,6 +84,7 @@ export default function Signup() {
  
         <button onClick={handleSubmit} className="btn" type="submit">submit</button>
         </form>
+      <Footer />  
     </div>
   );
 };

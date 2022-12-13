@@ -1,7 +1,6 @@
 import "./home.css"
-import Topnavbar from './topnavbar';
+import Hometopnavbar from './hometopnavbar';
 import Footer from "./footer";
-import { Figure } from "react-bootstrap";
   
 export default function home() {
   return (
@@ -9,9 +8,8 @@ export default function home() {
         <div class="header">
             <h1>Welcome to Happy Pet</h1>
         </div>
-        <Topnavbar />
+        <Hometopnavbar />
         <Footer />
-        <Figure />
     </>
   );
 };

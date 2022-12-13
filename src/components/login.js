@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./login.css";
+import Topnavbar from "./hometopnavbar";
+import Footer from "./footer";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,6 +19,7 @@ export default function Login() {
 
   return (
     <div className="Login">
+      <Topnavbar />
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
           <Form.Label>Email</Form.Label>
@@ -39,6 +42,7 @@ export default function Login() {
           Login
         </Button>
       </Form>
+      <Footer />
     </div>
   );
 }

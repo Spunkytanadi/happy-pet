@@ -1,9 +1,10 @@
 .header {
-    display: flex;
     background-color: rgba(4, 4, 5, 0.973);
+    display: flex;
 }
 
 h1 {
-    text-justify: auto;
+    text-align: center;
     color: white;
 }
+

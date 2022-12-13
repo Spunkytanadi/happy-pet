@@ -2,12 +2,14 @@ footer {
     background-color: black;
     padding: 10px;
     text-align: center;
-    position: relative;
     width: 100%;
+    vertical-align: bottom;
+    position: relative;
 }
 
-h6 {
+h4 {
     font-style: italic;
     text-align: center;
-    color: aliceblue;
+    color: white;
 }
+
