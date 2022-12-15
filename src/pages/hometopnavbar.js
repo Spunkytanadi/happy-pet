@@ -1,13 +1,12 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button"
 import Nav from "react-bootstrap/nav";
 import Container from "react-bootstrap/Container";
 
 export default function Hometopnavbar () {
     return (
         <>
-        <Navbar fixed="top" bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#home">
             <img

@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import Footer from './footer'
-import Topnavbar from './topnavbar';
+import Header from './header';
   
 export default function Signup() {
     const [name, setName] = useState('');
@@ -57,7 +57,7 @@ export default function Signup() {
 
   return (
     <div className="form">
-      <Topnavbar />
+      <Header />
         <div>
             <h1>User Registration</h1>
         </div>
