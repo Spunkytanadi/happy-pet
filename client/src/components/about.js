@@ -7,7 +7,7 @@ export default function About () {
     return (
         <div className="aboutpage">
             <Topnavbar />
-                <h1>About This Page</h1>
+                <h1 style={{ textAlign: 'center' }}>About This Page</h1>
                 <Jumbotron />
                 <div className="aboutimg" style={{ textAlign: 'center' }}>
                     <p>This site was created for those who love their pet and to share their pet daily cuteness.</p>

@@ -1,4 +1,5 @@
 import React from "react";
+import Share from "./share";
 
 export default function Jumbotron () {
     return (
@@ -7,6 +8,7 @@ export default function Jumbotron () {
           <img src="./world-pet.png" alt="" width="400px" height="450px" />
           <p class="lead">This is a place for pet lover to share their pet story.</p>
         </div>
+      <Share />
       </div>
     )
 }

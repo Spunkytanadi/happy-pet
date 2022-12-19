@@ -21,8 +21,12 @@ export default function Topnavbar () {
             />
           </Navbar.Brand>
           <Nav className="me-auto" style={{ textAlign: 'right' }}>
-            <Nav.Link href="About">About</Nav.Link>
-          </Nav>
+            <Button
+              variant="secondary"
+              onClick={() => navigate("/about")}
+            >
+              About
+            </Button>
             <Button
               variant="secondary"
               className="spacing"
@@ -36,6 +40,7 @@ export default function Topnavbar () {
             >
                 Signup
             </Button>
+          </Nav>
         </Container>
       </Navbar>
   );

@@ -1,13 +1,11 @@
 import React from "react";
 import { PermMedia, Label, EmojiEmotions } from "@material-ui/icons"
-import "./share.css"
-import Header from "./header";
-import Footer from "./footer";
+import "./share.css";
 
 export default function Share () {
     return (
         <div className="share">
-            <Header />
+            <aside>
             <div className="shareWarpper">
                 <div className="shareTop">
                     <img className="shareProfileImage" alt=""/>
@@ -16,7 +14,6 @@ export default function Share () {
                         className="shareInput"
                     />
                 </div>
-                <hr  className="shareHr" />
                 <div className="shareBottom">
                     <div className="ShareOptions">
                         <div className="shareOption">
@@ -35,7 +32,7 @@ export default function Share () {
                     <button className="shareButton">Share</button>
                 </div>
             </div>
-            <Footer />
+            </aside>
         </div>
     )
 }
