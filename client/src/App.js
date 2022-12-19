@@ -4,14 +4,12 @@ import Login from './components/login';
 import SignUp from './components/signup';
 import Footer from './components/footer';
 import React from 'react';
-import Header from './components/header';
 import About from './components/about';
 import Home from './components/home';
 
 function App() {
   return (
     <div>
-    <Header />
     <BrowserRouter>
     <Routes>
         <Route path='/' element={<Home />} />
@@ -24,6 +22,5 @@ function App() {
     </BrowserRouter>
     </div>
   );
-};
-
+}
 export default App;

@@ -20,7 +20,7 @@ export default function Topnavbar () {
               className="d-inline-block align-top"
             />
           </Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav className="me-auto" style={{ textAlign: 'right' }}>
             <Nav.Link href="About">About</Nav.Link>
           </Nav>
             <Button
@@ -30,8 +30,11 @@ export default function Topnavbar () {
             >
               Login
             </Button>
-            <Button variant="secondary" onClick={() => navigate("/signup")}>
-              SignUp
+            <Button 
+              variant="secondary" 
+              onClick={() => navigate("/signup")}
+            >
+                Signup
             </Button>
         </Container>
       </Navbar>

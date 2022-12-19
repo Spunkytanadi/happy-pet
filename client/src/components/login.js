@@ -1,83 +1,42 @@
-import { useState } from 'react';
-import './login.css'
-import Footer from './footer';
-import Jumbotron from './jumbotron';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Jumbotron from "./jumbotron";
+import Footer from "./footer";
+import Profile from "./profile";
 
 export default function Login () {
-const navigate = useNavigate();
-const [ username, setusername ] = useState(''); 
-const [ email, setEmail ] = useState('');
-const [ password, setPassword ] = useState('');
-const [ isLoggedin, setIsLoggedin ] = useState(false);
-
-const login = (e) => {
-	e.preventDefault();
-	console.log(email, password);
-	const userData = {
-	email,
-	password,
-	};
-	localStorage.setItem('token-info', JSON.stringify(userData));
-	setIsLoggedin(true);
-	setEmail('');
-	setPassword('');
-};
-
-const users = [{ email: "Jane", password: "testpassword" }];
-const handleSubmit = (e) => {
-	e.preventDefault();
+	const navigate = useNavigate ()
+	const [username, setusername] = useState("");
+	const [password, setpassword] = useState("");
+	const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false));
+	const users = [{ username: "Jane", password: "testpassword" }];
+	const handleSubmit = (e) => {
+	e.preventDefault()
 	const account = users.find((user) => user.username === username);
 	if (account && account.password === password) {
+		setauthenticated(true)
 		localStorage.setItem("authenticated", true);
-		navigate("/dashboard");
 	}
-};
-
-const logout = () => {
-	localStorage.removeItem('token-info');
-	Navigate("/");
-};
-
-return (
-	<>
+	};
+	return (
 	<div style={{ textAlign: 'center' }}>
-		<h1>Welcome Back</h1>
-		{!isLoggedin ? (
-		<>
+		<p>Welcome Back</p>
 			<form onSubmit={handleSubmit}>
-			<input
+				<input
 				type="text"
- 				name="Username"
- 				value={username}
- 				onChange={(e) => setusername(e.target.value)}
- 			/>
-			<input
-				type="email"
-				onChange={(e) => setEmail(e.target.value)}
-				value={email}
-				placeholder="Email"
+				name="Username"
+				value={username}
+				onChange={(e) => setusername(e.target.value)}
 			/>
 			<input
 				type="password"
-				onChange={(e) => setPassword(e.target.value)}
-				value={password}
-				placeholder="Password"
+				name="Password"
+				onChange={(e) => setpassword(e.target.value)}
 			/>
-			<button type="submit" onClick={login}>
-				submit
-			</button>
+				<input type="submit" value="Submit" />
 			</form>
-		</>
-		) : (
-		<>
-			<h1>User is logged in</h1>
-			<button onClickCapture={logout}>logout user</button>
-		</>
-		)}
-	<Jumbotron />
-	<Footer />
+		<Jumbotron />
+		<Footer />
 	</div>
-	</>
-);
-}
+	)
+};

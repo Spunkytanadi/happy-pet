@@ -1,12 +1,15 @@
-Navbar {
-    overflow: hidden;
+Nav {
     background-color: black;
-    position: absolute;
-    top: 0;
     width: 100%;
+    float: right;
+    display: inline;
+    border-right: 1px solid;
 }
 
-Container {
-    padding: 10px;
-    
+Navbar {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+
 }
