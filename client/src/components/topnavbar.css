@@ -1,0 +1,12 @@
+Navbar {
+    overflow: hidden;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+Container {
+    padding: 10px;
+    
+}

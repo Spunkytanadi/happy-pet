@@ -1,20 +1,6 @@
 import {useState} from 'react';
-import Footer from './footer'
-import Header from './header';
-import propTypes from "prop-types";
-import useToken from "./auth/useToken"
-  
-async function signUp(credentials) {
-  return fetch('http://localhost:3000/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ user:this.state })
-})
-    .then(data => data.json())
-}
-
+import Footer from './footer';
+import Jumbotron from './jumbotron';
 
 export default function Signup() {
     const [name, setName] = useState('');
@@ -70,10 +56,9 @@ export default function Signup() {
       };
 
   return (
-    <div className="form">
-      <Header />
+    <div className="form" style={{ textAlign: 'center' }}>
         <div>
-            <h1>User Registration</h1>
+            <h1>Hello New User</h1>
         </div>
 
         {/* Calling to the methods */}
@@ -98,11 +83,8 @@ export default function Signup() {
  
         <button onClick={handleSubmit} className="btn btn-dark" type="submit">submit</button>
         </form>
+        <Jumbotron />
       <Footer />  
     </div>
   );
 };
-
-Signup.propTypes = {
-  setToken: propTypes.func.isRequired
-}

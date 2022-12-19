@@ -1,20 +1,22 @@
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import Hometopnavbar from '../src/pages/hometopnavbar';
-import Home from '../src/pages/home';
-import Login from '../src/pages/login';
-import SignUp from '../src/pages/signup';
-import Footer from '../src/pages/footer';
+import Topnavbar from './components/topnavbar';
+import Login from './components/login';
+import SignUp from './components/signup';
+import Footer from './components/footer';
 import React from 'react';
-import Header from './pages/header';
+import Header from './components/header';
+import About from './components/about';
+import Home from './components/home';
 
 function App() {
   return (
     <div>
-    <BrowserRouter>
     <Header />
+    <BrowserRouter>
     <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/hometopnavbar' element={<Hometopnavbar />} />
+        <Route path='/topnavbar' element={<Topnavbar />} />
+        <Route path='/about' element={<About /> } />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/footer' element={<Footer />} />
