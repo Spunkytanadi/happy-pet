@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/nav";
-import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
@@ -9,39 +8,30 @@ export default function Topnavbar () {
   const navigate = useNavigate();
 
     return (
-        <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              alt=""
-              src="/happypet.png"
-              width="50"
-              height="50"
-              className="d-inline-block align-top"
-            />
-          </Navbar.Brand>
-          <Nav className="me-auto" style={{ textAlign: 'right' }}>
+      <div class="container-fluid">
+        <Navbar bg="dark" variant="dark" width="100%">
+          <Nav.Link href="/" className="logo">
+            <img src="/happypet.png" alt="logo" width="50px" height="50px" />
+          </Nav.Link>
+          <Nav>
             <Button
               variant="secondary"
-              onClick={() => navigate("/about")}
-            >
-              About
+              onClick={() => navigate("/about")}>
+                About
             </Button>
             <Button
               variant="secondary"
               className="spacing"
-              onClick={() => navigate("/login")}
-            >
-              Login
+              onClick={() => navigate("/login")}>
+                Login
             </Button>
             <Button 
               variant="secondary" 
-              onClick={() => navigate("/signup")}
-            >
+              onClick={() => navigate("/signup")}>
                 Signup
             </Button>
           </Nav>
-        </Container>
-      </Navbar>
+        </Navbar>
+      </div>  
   );
 }

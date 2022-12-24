@@ -2,10 +2,11 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Topnavbar from './components/topnavbar';
 import Login from './components/login';
 import SignUp from './components/signup';
-import Footer from './components/footer';
 import React from 'react';
 import About from './components/about';
 import Home from './components/home';
+import UserHome from './components/user/userHome'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
         <Route path='/about' element={<About /> } />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/footer' element={<Footer />} />
+        <Route path='/userHome' element={<UserHome />} />
     </Routes>
     </BrowserRouter>
     </div>

@@ -1,13 +1,13 @@
 import React from "react";
-import Jumbotron from "./jumbotron";
 import Topnavbar from "./topnavbar";
+import Carousel from "./carousel";
 import Footer from "./footer";
 
 export default function Home () {
     return (
         <div>
         <Topnavbar />
-        <Jumbotron />
+        <Carousel />
         <Footer />
         </div>
     )

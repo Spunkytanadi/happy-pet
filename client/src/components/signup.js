@@ -1,90 +1,80 @@
-import {useState} from 'react';
-import Footer from './footer';
-import Jumbotron from './jumbotron';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Container, Button, Col, Form, FormControl } from "react-bootstrap";
+import Header from "./header";
 
-export default function Signup() {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const [submitted, setSubmitted] = useState(false);
-    const [error, setError] = useState(false);
-
-    function handleName (e) {
-        setName(e.target.value);
-        setSubmitted(false);
+export default class Signup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: ""
     };
+  }
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-    function handleEmail (e) {
-        setEmail(e.target.value);
-        setSubmitted(false);
+  onSignupClick = () => {
+    const userData = {
+      username: this.state.username,
+      password: this.state.password
     };
+    console.log("Sign up " + userData.username + " " + userData.password);
+  };
 
-    function handlePassword (e) {
-        setPassword(e.target.value);
-        setSubmitted(false);
-    };
+  render() {
+    return (
+      <Container style={{ textALign: 'center' }}>
+        <Header />
+          <Col md="4">
+            <h1>Sign up</h1>
+            <Form>
+              <Form.Group controlId="usernameId">
+                <Form.Label>User name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  placeholder="Enter user name"
+                  value={this.state.username}
+                  onChange={this.onChange}
+                />
+                <FormControl.Feedback type="invalid"></FormControl.Feedback>
+              </Form.Group>
 
-    function handleSubmit (e) {
-        e.preventDefault();
-        if (name === '' || email === '' || password === '') {
-            setError(true);
-        } else {
-            setSubmitted(true);
-            setError(false);
-        }
-    };
+              <Form.Group controlId="email">
+                <Form.Label>Your Email
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  value={this.email}
+                  onChange={this.onChange}
+                />  
+                </Form.Label>
+              </Form.Group>
 
-    function successMessage () {
-        return (
-            <div className="success" style={{display: submitted ? '' : 'none',}}>
-                <h1>User {name} successfully registered!</h1>
-            </div>
-        );
-    };
-
-    function errorMessage () {
-        return (
-          <div
-            className="error"
-            style={{
-              display: error ? '' : 'none',
-            }}>
-            <h1>Please enter all the fields</h1>
-          </div>
-        );
-      };
-
-  return (
-    <div className="form" style={{ textAlign: 'center' }}>
-        <div>
-            <h1>Hello New User</h1>
-        </div>
-
-        {/* Calling to the methods */}
-        <div className='messages'>
-            {errorMessage()}
-            {successMessage()}
-        </div>
-      
-        <form>
-        {/* Labels and inputs for form data */}
-        <label className="label">Name</label>
-        <input onChange={handleName} className="input"
-          value={name} type="text" />
- 
-        <label className="label">Email</label>
-        <input onChange={handleEmail} className="input"
-          value={email} type="email" />
- 
-        <label className="label">Password</label>
-        <input onChange={handlePassword} className="input"
-          value={password} type="password" />
- 
-        <button onClick={handleSubmit} className="btn btn-dark" type="submit">submit</button>
-        </form>
-        <Jumbotron />
-      <Footer />  
-    </div>
-  );
-};
+              <Form.Group controlId="passwordId">
+                <Form.Label>Your password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  value={this.password}
+                  onChange={this.onChange}
+                />
+                <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+              </Form.Group>
+            </Form>
+            <Button 
+              color="primary"
+              onClick={this.onSignupClick}  
+            >Sign up</Button>
+            <p className="mt-2">
+              Already have account? <Link to="/login">Login</Link>
+            </p>
+          </Col>
+      </Container>
+    );
+  }
+}

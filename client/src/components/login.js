@@ -1,42 +1,65 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Jumbotron from "./jumbotron";
-import Footer from "./footer";
-import Profile from "./profile";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Container, Button, Col, Form, FormControl } from "react-bootstrap";
+import Header from "./header";
 
-export default function Login () {
-	const navigate = useNavigate ()
-	const [username, setusername] = useState("");
-	const [password, setpassword] = useState("");
-	const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false));
-	const users = [{ username: "Jane", password: "testpassword" }];
-	const handleSubmit = (e) => {
-	e.preventDefault()
-	const account = users.find((user) => user.username === username);
-	if (account && account.password === password) {
-		setauthenticated(true)
-		localStorage.setItem("authenticated", true);
-	}
-	};
-	return (
-	<div style={{ textAlign: 'center' }}>
-		<p>Welcome Back</p>
-			<form onSubmit={handleSubmit}>
-				<input
-				type="text"
-				name="Username"
-				value={username}
-				onChange={(e) => setusername(e.target.value)}
-			/>
-			<input
-				type="password"
-				name="Password"
-				onChange={(e) => setpassword(e.target.value)}
-			/>
-				<input type="submit" value="Submit" />
-			</form>
-		<Jumbotron />
-		<Footer />
-	</div>
-	)
-};
+export default class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      password: ""
+    };
+  }
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onLoginClick = () => {
+    const userData = {
+      username: this.state.username,
+      password: this.state.password
+    };
+    console.log("Login " + userData.username + " " + userData.password);
+  };
+
+  render() {
+    return (	
+      <Container>
+        <Header />
+          <Col md="4">
+            <h1>Login</h1>
+            <Form>
+              <Form.Group controlId="usernameId">
+                <Form.Label>User name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="username"
+                  placeholder="Enter user name"
+                  value={this.state.username}
+                  onChange={this.onChange}
+                />
+                <FormControl.Feedback type="invalid"></FormControl.Feedback>
+              </Form.Group>
+
+              <Form.Group controlId="passwordId">
+                <Form.Label>Your password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                />
+                <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
+              </Form.Group>
+            </Form>
+            <Button color="primary" onClick={this.onLoginClick}>Login</Button>
+            <p className="mt-2">
+              Don't have account? <Link to="/signup">Signup</Link>
+            </p>
+          </Col>
+      </Container>
+    );
+  }
+}

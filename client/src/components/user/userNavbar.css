@@ -1,0 +1,26 @@
+.topbarContainer {
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+}
+
+.topbarleft {
+    flex: 3;
+}
+
+.logo {
+    font-size: 24px;
+    margin-left: 20px;
+    font-weight: bolder;
+    color: white;
+    cursor: pointer;
+}
+
+.topbarCenter {
+    flex: 5;
+}
+
