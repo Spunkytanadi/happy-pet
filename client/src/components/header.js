@@ -3,7 +3,7 @@ import { Container, Nav } from "react-bootstrap";
 
 export default function Header () {
     return (
-        <div className="header" style={{ textAlign: 'center' }}>
+        <div className="header">
             <Container>
             <Nav class="navbar">
                 <a class="navbar-brand" href="/">

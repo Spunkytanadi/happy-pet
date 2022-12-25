@@ -8,7 +8,7 @@ export default function Topnavbar () {
   const navigate = useNavigate();
 
     return (
-      <div class="container-fluid">
+      <div className="container-fluid">
         <Navbar bg="dark" variant="dark" width="100%">
           <Nav.Link href="/" className="logo">
             <img src="/happypet.png" alt="logo" width="50px" height="50px" />

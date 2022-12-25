@@ -1,65 +1,81 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Container, Button, Col, Form, FormControl } from "react-bootstrap";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
+import "./login.css";
 import Header from "./header";
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
-  }
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+export default function Login () {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    console.log("username,password", username, password);
+    let result = await fetch("http://localhost:3000/login", {
+      method: 'post',
+      body: JSON.stringify({ username, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    result = await result.json();
+    console.log(result);
+    if (result.username) {
+      localStorage.setItem("user", JSON.stringify(result));
+      navigate("/profile");
+    } else {
+      alert("Your database do not exist!");
+    }
   };
 
-  onLoginClick = () => {
-    const userData = {
-      username: this.state.username,
-      password: this.state.password
-    };
-    console.log("Login " + userData.username + " " + userData.password);
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
   };
 
-  render() {
-    return (	
-      <Container>
-        <Header />
-          <Col md="4">
-            <h1>Login</h1>
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  return (
+    <div className="mb-1">
+      <Header />
+      <Container className="mb-3">
+          <h3>Login</h3>
+          <Card.Body>
             <Form>
-              <Form.Group controlId="usernameId">
-                <Form.Label>User name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="username"
-                  placeholder="Enter user name"
-                  value={this.state.username}
-                  onChange={this.onChange}
-                />
-                <FormControl.Feedback type="invalid"></FormControl.Feedback>
-              </Form.Group>
-
-              <Form.Group controlId="passwordId">
-                <Form.Label>Your password</Form.Label>
-                <Form.Control
-                  type="password"
-                  name="password"
-                  placeholder="Enter password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-                <Form.Control.Feedback type="invalid"></Form.Control.Feedback>
-              </Form.Group>
+              <Form.Control
+                type="text"
+                placeholder="username"
+                id="username"
+                name="username"
+                value={username}
+                onChange={handleUsername}
+              />
+              <br />
+              <Form.Control
+                type="text"
+                placeholder="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+              />
+              <br />
+              <Button variant="secondary" onClick={handleLogin}>
+                {" "}
+                LOG IN
+              </Button>
             </Form>
-            <Button color="primary" onClick={this.onLoginClick}>Login</Button>
+          </Card.Body>
             <p className="mt-2">
               Don't have account? <Link to="/signup">Signup</Link>
             </p>
-          </Col>
       </Container>
-    );
-  }
+    </div>
+  );
 }

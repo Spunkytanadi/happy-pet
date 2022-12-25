@@ -1,36 +1,69 @@
-import React from "react";
-import { PermMedia, Label, EmojiEmotions } from "@material-ui/icons"
-import "./share.css";
+import React, { useState } from 'react';
+import Footer from '../footer';
+import UserNavbar from './userNavbar';
+import { Card, Container, Button } from 'react-bootstrap';
+import { Form, useNavigate } from 'react-router-dom';
+
 
 export default function Share () {
-    return (
-        <div className="share">
-            <div className="shareWarpper">
-                <div className="shareTop">
-                    <img className="shareProfileImage" alt=""/>
-                    <input
-                        placeholder="What's new today?"
-                        className="shareInput"
-                    />
-                </div>
-                <div className="shareBottom">
-                    <div className="ShareOptions">
-                        <div className="shareOption">
-                            <PermMedia htmlColor="tomato" className="shareIcon" />
-                            <span className="shareOptionText">Photo of Video</span>
-                        </div>
-                        <div className="shareOption">
-                            <Label htmlColor="blue" className="shareIcon" />
-                            <span className="shareOptionText">Tag</span>
-                        </div>
-                        <div className="shareOption">
-                            <EmojiEmotions htmlColor="goldenrod" className="shareIcon" />
-                            <span className="shareOptionText">Feeling</span>
-                        </div>
-                    </div>
-                    <button className="shareButton">Share</button>
-                </div>
-            </div>
-        </div>
-    )
+    const [title, setTitle] = useState("");
+    const [picture, setPicture] = useState("")
+    const navigate = useNavigate("");
+
+    const collectData = async () => {
+        console.log("collect data...", title, picture);
+        let result = await fetch("http://localhost:3000/share", {
+          method: "post",
+          body: JSON.stringify({ title, picture }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        result = await result.json();
+        console.log("Here is the result", result);
+        localStorage.setItem("posts", JSON.stringify(result));
+        navigate("/profile");
+      };
+
+    const handleTitle = (e) => {
+        setTitle(e.target.value);
+      };
+	
+    const handlePicture = (e) => {
+        setPicture(e.target.value);
+    }
+
+	return (
+		<>
+        <UserNavbar />
+            <Container className='mb3' controlId="exampleForm.ControlInput1">
+                <Card>
+			        <h1>Share Here!</h1>
+                        <Card.Body>
+                            <Form action='action_page.php'>
+                                <input
+                                    type="text"
+                                    placeholder="Post Title"
+                                    id="title"
+                                    value={title}
+                                    onChange={handleTitle}
+                                />
+                                <input 
+                                    type="file" 
+                                    id="myFile" 
+                                    name="filename"
+                                    placeholder="picture"
+                                    value="picture"
+                                    onChange={handlePicture}
+                                />
+                            </Form>
+                        </Card.Body>
+                </Card>
+                <Button variant="secondary" onclick={collectData}>
+                    Submit
+                </Button>
+                </Container>{" "}
+            <Footer />
+		</>
+	);
 }
