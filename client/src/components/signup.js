@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import "./signup.css"
 import Header from "./header";
 
-export default function SignUp() {
+export default function Signup() {
     //State for Registration
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ export default function SignUp() {
         result = await result.json();
         console.log("Here is the result", result);
         localStorage.setItem("user", JSON.stringify(result));
-        navigate("/login");
+        navigate("/home");
     };
 
     // Handling the first change
@@ -51,7 +51,7 @@ export default function SignUp() {
         <div className="mb-1">
           <Header />
             <Container className="mb-2">
-                    <h1>Sign Up</h1>
+                    <h1>Signup</h1>
                     <Card.Body>
                         <Form>
                             <Form.Control
@@ -84,6 +84,7 @@ export default function SignUp() {
                             <Button variant="secondary" type="button" onClick={collectData}>
                                 Create Account
                             </Button>
+                            <span><Link to="/login"></Link></span>
                         </Form>
                     </Card.Body>
                       <p className="mt-2">

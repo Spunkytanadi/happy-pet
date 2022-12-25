@@ -4,9 +4,9 @@ const dotenv = require('dotenv').config()
 const path = require('path')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT  
-const User = require('./Router/signuprouter') 
+const User = require('./model/user') 
 
-require("./Router/signuprouter")
+require("./model/user")
 
 const cors = require('cors')
 app.use(cors())
@@ -21,6 +21,8 @@ mongoose
   })
   .then(console.log("Connected to MongoDB."))
   .catch((err) => console.log(err));
+
+app.get("/", )
 
 //signup routes
 app.post("/signup", async (req, res) => {
@@ -46,6 +48,6 @@ app.post("/signup", async (req, res) => {
   });
   
 
-app.listen(process.env.RUNNING_PORT, function () {
-    console.log("API is Running on Port: " + process.env.RUNNING_PORT)
+app.listen(process.env.PORT, function () {
+    console.log("API is Running on Port: " + process.env.PORT)
 })

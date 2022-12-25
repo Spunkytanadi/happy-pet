@@ -6,6 +6,12 @@ import { Button } from "react-bootstrap";
 
 export default function Topnavbar () {
   const navigate = useNavigate();
+  const change = localStorage.getItem("user")
+
+  const logOut = () =>  {
+    localStorage.clear();
+    navigate('/')
+  } 
 
     return (
       <div className="container-fluid">
@@ -13,24 +19,30 @@ export default function Topnavbar () {
           <Nav.Link href="/" className="logo">
             <img src="/happypet.png" alt="logo" width="50px" height="50px" />
           </Nav.Link>
-          <Nav>
-            <Button
-              variant="secondary"
-              onClick={() => navigate("/about")}>
-                About
-            </Button>
-            <Button
-              variant="secondary"
-              className="spacing"
-              onClick={() => navigate("/login")}>
-                Login
-            </Button>
-            <Button 
-              variant="secondary" 
-              onClick={() => navigate("/signup")}>
-                Signup
-            </Button>
+          <Nav className="me-auto">
+            <Nav.Link href="/about">About</Nav.Link>
           </Nav>
+          <div>
+            {change ? (
+              <Button onClick={logOut} to="/" variant="dark">
+                logout
+              </Button>
+            ) : (
+              <Nav>
+                <Button
+                  variant="secondary"
+                  className="spacing"
+                  onClick={() => navigate("/login")}>
+                    Login
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  onClick={() => navigate("/signup")}>
+                    Signup
+                </Button>
+              </Nav>
+              )}
+          </div>
         </Navbar>
       </div>  
   );

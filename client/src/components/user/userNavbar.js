@@ -3,7 +3,7 @@ import React from "react";
 export default function UserNavbar () {
     return (
         <div className="userNavbar">
-            <nav class="navbar navbar-dark bg-dark">
+            <nav className="navbar navbar-dark bg-dark">
                 <div className="topbarLeft">
                     <span className="logo">Happy Pet</span>
                 </div>
