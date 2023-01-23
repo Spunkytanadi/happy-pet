@@ -20,7 +20,7 @@ export default function Signup() {
     const collectData = async () => {
         console.log(username, email, password);
         let result = await fetch("http://localhost:3000/signup", {
-            method: "post",
+            method: "POST",
             body: JSON.stringify({ username, email, password }),
             headers: {
                 "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export default function Signup() {
         result = await result.json();
         console.log("Here is the result", result);
         localStorage.setItem("user", JSON.stringify(result));
-        navigate("/home");
+        navigate("/login");
     };
 
     // Handling the first change

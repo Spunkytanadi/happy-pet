@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const shareSchema = new mongoose.Schema ({
     title: String,
-    picture: Boolean
+    picture: String
 });
 
 module.exports = mongoose.model("Share", userSchema)

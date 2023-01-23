@@ -59,7 +59,7 @@ export default function Share () {
                             </Form>
                         </Card.Body>
                 </Card>
-                <Button variant="secondary" onclick={collectData}>
+                <Button variant="secondary" onClick={collectData}>
                     Submit
                 </Button>
                 </Container>{" "}

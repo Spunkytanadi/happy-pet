@@ -12,12 +12,12 @@ import Header from "./header";
 export default function Login () {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [isLoggedin, setIsLoggedin] = useState(false);
 
   const handleLogin = async () => {
-    console.log("username,password", username, password);
+    console.log(username, password);
     let result = await fetch("http://localhost:3000/login", {
-      method: 'post',
+      method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +75,6 @@ export default function Login () {
             <p className="mt-2">
               Don't have account? <Link to="/signup">Signup</Link>
             </p>
-          
       </Container>
     </div>
   );

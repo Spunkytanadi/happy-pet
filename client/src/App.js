@@ -5,7 +5,7 @@ import SignUp from './components/signup';
 import React from 'react';
 import About from './components/about';
 import Home from './components/home';
-import Profile from './components/user/profile';
+import Homepage from './components/user/homepage';
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
         <Route path='/about' element={<About /> } />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='profile' element={<Profile />} />
+        <Route path='/homepage' element={<Homepage />} />
     </Routes>
     </BrowserRouter>
     </div>
